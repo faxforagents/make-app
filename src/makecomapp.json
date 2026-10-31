@@ -75,5 +75,13 @@
         "webhook": {},
         "function": {}
     },
-    "origins": []
+    "origins": [
+        {
+            "label": "Production",
+            "baseUrl": "https://us2.make.com/api",
+            "appId": "faxforagents-hsoxyw",
+            "appVersion": 1,
+            "apikeyFile": "../.secrets/apikey"
+        }
+    ]
 }

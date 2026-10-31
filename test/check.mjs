@@ -50,4 +50,11 @@ assert.equal(list.pagination.condition, '{{body.next_cursor}}');
 assert.ok(read(app.components.module.listInbox.codeFiles.mappableParams).some((p) => p.name === 'limit' && p.required));
 
 assert.equal(app.components.module.universal.moduleType, 'universal');
+
+// The icon Make shows: a PNG, square, 512 px or more (Make's app logo requirements).
+const icon = readFileSync(join(root, 'assets/icon.png'));
+assert.equal(icon.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', 'assets/icon.png is a PNG');
+const [w, h] = [icon.readUInt32BE(16), icon.readUInt32BE(20)];
+assert.ok(w === h && w >= 512, `icon is square and at least 512 px (${w}x${h})`);
+for (const origin of app.origins) assert.match(origin.appId, /^[a-z][0-9a-z-]+[0-9a-z]$/, 'origin appId is a Make app id');
 console.log('make app definition ok:', Object.keys(app.components.module).join(', '));

@@ -29,7 +29,7 @@ faxes. It is made by JSB Holdings LLC and built by [Synapse](https://synapsereal
 
 This repository holds the app definition as the Make Apps Editor for VS Code lays it out. One
 `makecomapp.json` manifest under `src/`, one JSON file per component. The app is deployed from here
-with the editor's "Deploy to Make" and reviewed inside Make.
+with `scripts/deploy.py` or the editor's "Deploy to Make" and reviewed inside Make.
 
 ## Modules
 
@@ -66,11 +66,34 @@ node test/check.mjs       # every file parses, every module is complete, paginat
 sh scripts/truthcheck.sh
 ```
 
-Deploying: open `src/` in VS Code with the Make Apps Editor extension, sign in to Make, right-click
-`makecomapp.json` and choose "Deploy to Make". Then build one test scenario per module and request
-the review from the app's Review tab, as the
+## Deploying
+
+Both paths below reach the same app, `faxforagents-hsoxyw` on us2.make.com. The `origins` entry in
+`src/makecomapp.json` names it for both.
+
+Through Make's Custom Apps API, with standard library Python only:
+
+```bash
+set -a; . ~/.config/faxforagents/make.env; set +a   # MAKE_ZONE and MAKE_API_TOKEN, scopes sdk-apps:read and sdk-apps:write
+python3 scripts/deploy.py
+```
+
+The script creates the app when the manifest has no origin for the zone, then fetches every section
+and writes only what differs. Base, common, README and icon come first. Then the connection with its
+api, parameters and common. Then each module with its api, expect (the mappable parameters), interface
+and samples. Groups go last, because Make rejects a group that names a module it does not have yet. A
+second run prints "unchanged" on every line. Make repaints the icon in the theme colour, so the served
+PNG never equals the source. `src/assets/icon.deployed.json` keeps the hash of both, and the icon is
+uploaded again only when one of them changes. The one thing Make adds on its own is
+`crud: read` on the search module. The token is read from the environment and never printed.
+
+From VS Code: open `src/` with the Make Apps Editor extension, put the API key in `.secrets/apikey`
+(ignored by git), right-click `makecomapp.json` and choose "Deploy to Make".
+
+Review and publication stay in Make's web editor. Build one test scenario per module and request the
+review from the app's Review tab, as the
 [review prerequisites](https://developers.make.com/custom-apps-documentation/app-review/prerequisites.md)
-ask.
+ask. The script never requests a review and never publishes.
 
 ## Licence
 

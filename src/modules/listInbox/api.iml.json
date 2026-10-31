@@ -1,0 +1,29 @@
+{
+    "url": "/v1/inbox",
+    "method": "GET",
+    "qs": {
+        "limit": "{{if(parameters.limit < 100, parameters.limit, 100)}}",
+        "status": "{{ifempty(parameters.status, undefined)}}"
+    },
+    "response": {
+        "iterate": "{{body.items}}",
+        "limit": "{{parameters.limit}}",
+        "output": {
+            "id": "{{item.id}}",
+            "from": "{{item.from}}",
+            "to": "{{item.to}}",
+            "pages": "{{item.pages}}",
+            "status": "{{item.status}}",
+            "document_id": "{{item.document_id}}",
+            "amount_micro": "{{item.amount_micro}}",
+            "received_at": "{{parseDate(item.received_at, 'YYYY-MM-DDTHH:mm:ssZ')}}",
+            "read_at": "{{if(item.read_at, parseDate(item.read_at, 'YYYY-MM-DDTHH:mm:ssZ'), undefined)}}"
+        }
+    },
+    "pagination": {
+        "qs": {
+            "cursor": "{{body.next_cursor}}"
+        },
+        "condition": "{{body.next_cursor}}"
+    }
+}

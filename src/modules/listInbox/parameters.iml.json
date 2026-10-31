@@ -1,0 +1,21 @@
+[
+    {
+        "name": "status",
+        "type": "select",
+        "label": "Status",
+        "options": [
+            { "label": "Received", "value": "received" },
+            { "label": "Read", "value": "read" },
+            { "label": "Archived", "value": "archived" }
+        ],
+        "help": "Only received faxes in this state. Empty returns every state."
+    },
+    {
+        "name": "limit",
+        "type": "number",
+        "label": "Limit",
+        "required": true,
+        "default": 20,
+        "help": "The most received faxes to return. Pages of up to 100 are followed with the cursor."
+    }
+]

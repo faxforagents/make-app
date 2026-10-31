@@ -1,0 +1,14 @@
+[
+    { "name": "id", "type": "text", "label": "Fax ID" },
+    { "name": "state", "type": "text", "label": "State" },
+    { "name": "to", "type": "text", "label": "To" },
+    { "name": "document_id", "type": "text", "label": "Document ID" },
+    { "name": "quote_id", "type": "text", "label": "Quote ID" },
+    { "name": "billable_pages", "type": "number", "label": "Billable pages" },
+    { "name": "amount_micro", "type": "number", "label": "Amount (USD micro-units)" },
+    { "name": "amount_usd", "type": "number", "label": "Amount (USD)" },
+    { "name": "currency", "type": "text", "label": "Currency" },
+    { "name": "client_reference", "type": "text", "label": "Client reference" },
+    { "name": "approval_id", "type": "text", "label": "Approval ID" },
+    { "name": "created_at", "type": "date", "label": "Created at" }
+]

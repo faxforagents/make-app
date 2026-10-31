@@ -1,0 +1,67 @@
+[
+    {
+        "url": "/v1/documents",
+        "method": "POST",
+        "body": {
+            "text": "{{if(parameters.source = 'text', parameters.text, undefined)}}",
+            "markdown": "{{if(parameters.source = 'markdown', parameters.markdown, undefined)}}",
+            "filename": "{{ifempty(parameters.filename, undefined)}}"
+        },
+        "response": {
+            "temp": {
+                "documentId": "{{body.id}}",
+                "pageCount": "{{body.page_count}}"
+            }
+        }
+    },
+    {
+        "url": "/v1/fax-quotes",
+        "method": "POST",
+        "body": {
+            "document_id": "{{temp.documentId}}",
+            "to": "{{parameters.to}}",
+            "cover": "{{if(parameters.coverSubject || parameters.coverMessage || parameters.coverToName || parameters.coverFromName, {subject: ifempty(parameters.coverSubject, undefined), message: ifempty(parameters.coverMessage, undefined), to_name: ifempty(parameters.coverToName, undefined), from_name: ifempty(parameters.coverFromName, undefined)}, undefined)}}"
+        },
+        "response": {
+            "temp": {
+                "quoteId": "{{body.id}}",
+                "amountMicro": "{{body.amount_micro}}",
+                "billablePages": "{{body.billable_pages}}",
+                "authorizationRequired": "{{body.authorization_required}}"
+            },
+            "valid": {
+                "condition": "{{!body.authorization_required || parameters.approvalId}}",
+                "type": "DataError",
+                "message": "This send needs a human approval. A person approves quote {{body.id}} in the dashboard, then pass the approval id in Approval ID. Nothing was sent."
+            }
+        }
+    },
+    {
+        "url": "/v1/faxes",
+        "method": "POST",
+        "headers": {
+            "idempotency-key": "{{ifempty(parameters.idempotencyKey, 'make:' + temp.quoteId)}}"
+        },
+        "body": {
+            "quote_id": "{{temp.quoteId}}",
+            "approval_id": "{{ifempty(parameters.approvalId, undefined)}}",
+            "client_reference": "{{ifempty(parameters.clientReference, undefined)}}"
+        },
+        "response": {
+            "output": {
+                "id": "{{body.id}}",
+                "state": "{{body.state}}",
+                "to": "{{body.to}}",
+                "document_id": "{{temp.documentId}}",
+                "quote_id": "{{temp.quoteId}}",
+                "billable_pages": "{{body.billable_pages}}",
+                "amount_micro": "{{body.amount_micro}}",
+                "amount_usd": "{{body.amount_micro / 1000000}}",
+                "currency": "{{body.currency}}",
+                "client_reference": "{{body.client_reference}}",
+                "approval_id": "{{body.approval_id}}",
+                "created_at": "{{parseDate(body.created_at, 'YYYY-MM-DDTHH:mm:ssZ')}}"
+            }
+        }
+    }
+]

@@ -1,0 +1,5 @@
+{
+    "body": { "environment": "test", "currency": "USD", "available_micro": 10000000, "held_micro": 0 },
+    "headers": { "content-type": "application/json" },
+    "statusCode": 200
+}

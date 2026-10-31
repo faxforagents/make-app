@@ -1,0 +1,79 @@
+{
+    "fileVersion": 1,
+    "generalCodeFiles": {
+        "base": "general/base.iml.json",
+        "common": "general/common.json",
+        "readme": "README.md",
+        "groups": "general/groups.json"
+    },
+    "components": {
+        "connection": {
+            "faxforagents": {
+                "label": "Fax for Agents",
+                "connectionType": "basic",
+                "codeFiles": {
+                    "communication": "connections/faxforagents/api.iml.json",
+                    "common": "connections/faxforagents/common.json",
+                    "params": "connections/faxforagents/parameters.iml.json"
+                }
+            }
+        },
+        "rpc": {},
+        "module": {
+            "sendFax": {
+                "label": "Send a Fax",
+                "description": "Prepares a document from text or Markdown, quotes it to a number and queues the fax. Returns the fax with its state.",
+                "moduleType": "action",
+                "actionCrud": "create",
+                "connection": "faxforagents",
+                "codeFiles": {
+                    "communication": "modules/sendFax/api.iml.json",
+                    "mappableParams": "modules/sendFax/parameters.iml.json",
+                    "interface": "modules/sendFax/interface.iml.json",
+                    "samples": "modules/sendFax/samples.iml.json"
+                }
+            },
+            "getFaxStatus": {
+                "label": "Get a Fax Status",
+                "description": "Reads one fax: queued, active, delivered, partial, failed or unknown, with the carrier's evidence once delivered.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "faxforagents",
+                "codeFiles": {
+                    "communication": "modules/getFaxStatus/api.iml.json",
+                    "mappableParams": "modules/getFaxStatus/parameters.iml.json",
+                    "interface": "modules/getFaxStatus/interface.iml.json",
+                    "samples": "modules/getFaxStatus/samples.iml.json"
+                }
+            },
+            "listInbox": {
+                "label": "List Received Faxes",
+                "description": "Lists received faxes, newest first, metadata only, following the cursor up to the limit.",
+                "moduleType": "search",
+                "connection": "faxforagents",
+                "codeFiles": {
+                    "communication": "modules/listInbox/api.iml.json",
+                    "mappableParams": "modules/listInbox/parameters.iml.json",
+                    "interface": "modules/listInbox/interface.iml.json",
+                    "samples": "modules/listInbox/samples.iml.json"
+                }
+            },
+            "universal": {
+                "label": "Make an API Call",
+                "description": "Performs an arbitrary authorized API call against api.faxforagents.com.",
+                "moduleType": "universal",
+                "universalModuleType": "rest",
+                "connection": "faxforagents",
+                "codeFiles": {
+                    "communication": "modules/universal/api.iml.json",
+                    "mappableParams": "modules/universal/parameters.iml.json",
+                    "interface": "modules/universal/interface.iml.json",
+                    "samples": "modules/universal/samples.iml.json"
+                }
+            }
+        },
+        "webhook": {},
+        "function": {}
+    },
+    "origins": []
+}

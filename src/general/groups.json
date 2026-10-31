@@ -1,0 +1,14 @@
+[
+    {
+        "label": "Faxes",
+        "modules": ["sendFax", "getFaxStatus"]
+    },
+    {
+        "label": "Inbox",
+        "modules": ["listInbox"]
+    },
+    {
+        "label": "Other",
+        "modules": ["universal"]
+    }
+]

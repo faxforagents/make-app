@@ -1,0 +1,9 @@
+[
+    {
+        "name": "apiKey",
+        "type": "password",
+        "label": "API key",
+        "required": true,
+        "help": "Create a key at [app.faxforagents.com](https://app.faxforagents.com). An ffa_test_ key reaches the sandbox only and costs nothing. An ffa_live_ key reaches the carrier and spends the prepaid wallet."
+    }
+]

@@ -1,0 +1,25 @@
+[
+    { "name": "id", "type": "text", "label": "Fax ID" },
+    { "name": "state", "type": "text", "label": "State" },
+    { "name": "failure_code", "type": "text", "label": "Failure code" },
+    { "name": "to", "type": "text", "label": "To" },
+    { "name": "from", "type": "text", "label": "From" },
+    { "name": "document_id", "type": "text", "label": "Document ID" },
+    { "name": "quote_id", "type": "text", "label": "Quote ID" },
+    { "name": "billable_pages", "type": "number", "label": "Billable pages" },
+    { "name": "pages_sent", "type": "number", "label": "Pages sent" },
+    { "name": "amount_micro", "type": "number", "label": "Amount (USD micro-units)" },
+    { "name": "captured_micro", "type": "number", "label": "Captured (USD micro-units)" },
+    { "name": "currency", "type": "text", "label": "Currency" },
+    { "name": "provider", "type": "text", "label": "Provider" },
+    { "name": "provider_ref", "type": "text", "label": "Provider reference" },
+    { "name": "client_reference", "type": "text", "label": "Client reference" },
+    { "name": "attempt_count", "type": "number", "label": "Attempts" },
+    { "name": "evidence", "type": "collection", "label": "Evidence", "spec": [
+        { "name": "remote_station_id", "type": "text", "label": "Remote station ID" },
+        { "name": "pages", "type": "number", "label": "Pages" }
+    ] },
+    { "name": "created_at", "type": "date", "label": "Created at" },
+    { "name": "updated_at", "type": "date", "label": "Updated at" },
+    { "name": "completed_at", "type": "date", "label": "Completed at" }
+]

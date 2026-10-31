@@ -1,0 +1,14 @@
+{
+    "id": "fax_33333333333333333333333333333333",
+    "state": "queued",
+    "to": "+15550000001",
+    "document_id": "doc_11111111111111111111111111111111",
+    "quote_id": "qte_22222222222222222222222222222222",
+    "billable_pages": 1,
+    "amount_micro": 39000,
+    "amount_usd": 0.039,
+    "currency": "USD",
+    "client_reference": "order 7",
+    "approval_id": null,
+    "created_at": "2026-10-31T00:00:00Z"
+}

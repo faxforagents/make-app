@@ -1,0 +1,28 @@
+{
+    "url": "/v1/faxes/{{parameters.faxId}}",
+    "method": "GET",
+    "response": {
+        "output": {
+            "id": "{{body.id}}",
+            "state": "{{body.state}}",
+            "failure_code": "{{body.failure_code}}",
+            "to": "{{body.to}}",
+            "from": "{{body.from}}",
+            "document_id": "{{body.document_id}}",
+            "quote_id": "{{body.quote_id}}",
+            "billable_pages": "{{body.billable_pages}}",
+            "pages_sent": "{{body.pages_sent}}",
+            "amount_micro": "{{body.amount_micro}}",
+            "captured_micro": "{{body.captured_micro}}",
+            "currency": "{{body.currency}}",
+            "provider": "{{body.provider}}",
+            "provider_ref": "{{body.provider_ref}}",
+            "client_reference": "{{body.client_reference}}",
+            "attempt_count": "{{body.attempt_count}}",
+            "evidence": "{{body.evidence}}",
+            "created_at": "{{parseDate(body.created_at, 'YYYY-MM-DDTHH:mm:ssZ')}}",
+            "updated_at": "{{parseDate(body.updated_at, 'YYYY-MM-DDTHH:mm:ssZ')}}",
+            "completed_at": "{{if(body.completed_at, parseDate(body.completed_at, 'YYYY-MM-DDTHH:mm:ssZ'), undefined)}}"
+        }
+    }
+}

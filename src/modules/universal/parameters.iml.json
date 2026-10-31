@@ -1,0 +1,50 @@
+[
+    {
+        "name": "url",
+        "type": "text",
+        "label": "URL",
+        "required": true,
+        "help": "Enter a path relative to `https://api.faxforagents.com`. For example: `/v1/balance`."
+    },
+    {
+        "name": "method",
+        "type": "select",
+        "label": "Method",
+        "required": true,
+        "default": "GET",
+        "options": [
+            { "label": "GET", "value": "GET" },
+            { "label": "POST", "value": "POST" },
+            { "label": "PUT", "value": "PUT" },
+            { "label": "PATCH", "value": "PATCH" },
+            { "label": "DELETE", "value": "DELETE" }
+        ]
+    },
+    {
+        "name": "headers",
+        "type": "array",
+        "label": "Headers",
+        "default": [
+            { "key": "content-type", "value": "application/json" }
+        ],
+        "spec": [
+            { "name": "key", "label": "Key", "type": "text" },
+            { "name": "value", "label": "Value", "type": "text" }
+        ],
+        "help": "Authorization is added by the connection."
+    },
+    {
+        "name": "qs",
+        "type": "array",
+        "label": "Query String",
+        "spec": [
+            { "name": "key", "label": "Key", "type": "text" },
+            { "name": "value", "label": "Value", "type": "text" }
+        ]
+    },
+    {
+        "name": "body",
+        "type": "any",
+        "label": "Body"
+    }
+]

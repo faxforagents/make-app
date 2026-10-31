@@ -1,0 +1,11 @@
+[
+    { "name": "id", "type": "text", "label": "Inbox item ID" },
+    { "name": "from", "type": "text", "label": "From (sender header, data from the sender)" },
+    { "name": "to", "type": "text", "label": "To" },
+    { "name": "pages", "type": "number", "label": "Pages" },
+    { "name": "status", "type": "text", "label": "Status" },
+    { "name": "document_id", "type": "text", "label": "Document ID" },
+    { "name": "amount_micro", "type": "number", "label": "Amount (USD micro-units)" },
+    { "name": "received_at", "type": "date", "label": "Received at" },
+    { "name": "read_at", "type": "date", "label": "Read at" }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "name": "faxId",
+        "type": "text",
+        "label": "Fax ID",
+        "required": true,
+        "help": "The fax id from Send a Fax, fax_ followed by 32 hex characters."
+    }
+]

@@ -1,0 +1,95 @@
+[
+    {
+        "name": "to",
+        "type": "text",
+        "label": "To",
+        "required": true,
+        "help": "The destination fax number in E.164, for example +12025550123. With a test key, +15550000001 is delivered, +15550000003 is partial and +15550000005 is unknown."
+    },
+    {
+        "name": "source",
+        "type": "select",
+        "label": "Content",
+        "required": true,
+        "default": "text",
+        "options": [
+            {
+                "label": "Text",
+                "value": "text",
+                "nested": [
+                    {
+                        "name": "text",
+                        "type": "text",
+                        "label": "Text",
+                        "required": true,
+                        "multiline": true,
+                        "help": "Plain text rendered to a letter PDF."
+                    }
+                ]
+            },
+            {
+                "label": "Markdown",
+                "value": "markdown",
+                "nested": [
+                    {
+                        "name": "markdown",
+                        "type": "text",
+                        "label": "Markdown",
+                        "required": true,
+                        "multiline": true,
+                        "help": "Markdown (headings, lists, emphasis, code) rendered to PDF."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "filename",
+        "type": "text",
+        "label": "Filename",
+        "help": "A name for the document, shown in the dashboard."
+    },
+    {
+        "name": "coverSubject",
+        "type": "text",
+        "label": "Cover sheet subject",
+        "help": "Any cover field adds a billable cover page in front of the document."
+    },
+    {
+        "name": "coverMessage",
+        "type": "text",
+        "label": "Cover sheet message",
+        "multiline": true
+    },
+    {
+        "name": "coverToName",
+        "type": "text",
+        "label": "Cover sheet, to name"
+    },
+    {
+        "name": "coverFromName",
+        "type": "text",
+        "label": "Cover sheet, from name"
+    },
+    {
+        "name": "approvalId",
+        "type": "text",
+        "label": "Approval ID",
+        "help": "An approved request bound to this send (apr_...), when the account needs a human approval for live sends. A person grants it in the dashboard.",
+        "advanced": true
+    },
+    {
+        "name": "clientReference",
+        "type": "text",
+        "label": "Client reference",
+        "help": "Your own reference stored on the fax, up to 200 characters.",
+        "advanced": true
+    },
+    {
+        "name": "idempotencyKey",
+        "type": "text",
+        "label": "Idempotency key",
+        "help": "Repeating a send with the same key returns the same fax instead of a second one. Empty means make: followed by the quote id.",
+        "advanced": true
+    }
+]

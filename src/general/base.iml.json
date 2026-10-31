@@ -1,0 +1,19 @@
+{
+    "baseUrl": "https://api.faxforagents.com",
+    "headers": {
+        "authorization": "Bearer {{connection.apiKey}}",
+        "accept": "application/json",
+        "user-agent": "make-faxforagents-app/1.0"
+    },
+    "response": {
+        "error": {
+            "type": "{{if(statusCode = 429, 'RateLimitError', if(statusCode >= 500, 'ConnectionError', if(statusCode = 401 || statusCode = 403, 'InvalidAccessTokenError', 'DataError')))}}",
+            "message": "[{{statusCode}}] {{ifempty(body.error.message, 'Request failed')}}{{if(body.error.code, ' (error_code=' + body.error.code + ')', '')}}{{if(body.error.correlation_id, ' [' + body.error.correlation_id + ']', '')}}"
+        }
+    },
+    "log": {
+        "sanitize": [
+            "request.headers.authorization"
+        ]
+    }
+}

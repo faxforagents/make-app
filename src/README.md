@@ -6,6 +6,6 @@ Four modules: Send a Fax, Get a Fax Status, List Received Faxes and Make an API 
 
 A live send needs a human approval bound to the exact quote, or a policy the account owner wrote outside Make. When the quote says so, the module stops with the quote id and nothing is sent. A person approves it in the dashboard and the approval id goes into the module.
 
-Price card launch-v2 is effective from 2026-10-31. $0.039 per page sent, $0.019 per page received. $2 per number per month, $19 per month for the Agent workspace. Sandbox pages cost 0.
+Price card launch-v3 is effective from 2026-11-12. $0.039 per page sent, $0.019 per page received. $2 per number per month, $19 per month for the Agent workspace. Sandbox pages cost 0.
 
 Documentation: https://faxforagents.com/docs/api/ Support: hello@faxforagents.com
